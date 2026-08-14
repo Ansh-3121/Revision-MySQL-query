@@ -1,0 +1,97 @@
+create database company_db;
+use company_db;
+create table employee(employee_id int ,name varchar(20),department varchar(20),city varchar(20),salary decimal(10,2),age int,joining_date date
+, Experience int ,Gender varchar(20),manager_id int,Email varchar(50),performance_score int,bonus decimal(10,2));
+insert into employee
+(employee_id, name, department, city, salary, age, joining_date, experience, gender, manager_id, email, performance_score, bonus)
+VALUES
+(101, 'Rahul', 'IT', 'Mumbai', 55000, 24, '2023-06-15', 2, 'Male', 105, 'rahul@gmail.com', 8, 5000),
+(102, 'Priya', 'HR', 'Pune', 48000, 26, '2022-04-10', 3, 'Female', 106, 'priya@gmail.com', 9, 6000),
+(103, 'Amit', 'IT', 'Mumbai', 72000, 29, '2020-01-20', 5, 'Male', 105, 'amit@gmail.com', 9, 8000),
+(104, 'Sneha', 'Finance', 'Delhi', 65000, 31, '2019-08-12', 6, 'Female', 107, 'sneha@gmail.com', 7, 7000),
+(105, 'Vikas', 'IT', 'Pune', 90000, 35, '2017-03-25', 9, 'Male', NULL, 'vikas@gmail.com', 10, 12000),
+(106, 'Neha', 'HR', 'Mumbai', 75000, 33, '2018-11-05', 8, 'Female', NULL, 'neha@gmail.com', 9, 10000),
+(107, 'Rohit', 'Finance', 'Delhi', 85000, 38, '2016-07-18', 10, 'Male', NULL, 'rohit@gmail.com', 8, 11000),
+(108, 'Pooja', 'Marketing', 'Mumbai', 45000, 23, '2024-02-14', 1, 'Female', 109, 'pooja@gmail.com', 7, 4000),
+(109, 'Karan', 'Marketing', 'Pune', 68000, 30, '2021-09-22', 4, 'Male', NULL, 'karan@gmail.com', 9, 7500),
+(110, 'Anjali', 'Sales', 'Mumbai', 52000, 27, '2023-01-11', 2, 'Female', 111, 'anjali@gmail.com', 8, 5500),
+(111, 'Suresh', 'Sales', 'Delhi', 82000, 40, '2015-05-30', 11, 'Male', NULL, 'suresh@gmail.com', 10, 15000),
+(112, 'Riya', 'IT', 'Mumbai', 60000, 25, '2022-12-01', 3, 'Female', 105, 'riya@gmail.com', 6, 4500);
+select *from employee;
+
+-- Q1
+select name,department,salary from employee;
+-- Q2
+select name , department from employee where department='IT';
+-- Q4
+select name , salary from employee where salary>60000;
+-- Q5 
+select name from employee where department='IT' and salary>60000;
+-- Q6
+select distinct department from employee ;
+-- Q7
+select name , salary from employee order by  salary desc;
+-- Q8 
+select name , salary from employee order by  salary desc limit 3;
+-- Q9
+select name, city,salary from employee  where city='Mumbai' order by salary desc;
+-- Q10
+select name ,city,salary from employee where city  in('Mumbai','Pune');
+-- Q11
+select name ,salary from employee where salary between 50000 and 80000;
+-- Q12
+select name , department from employee where department in ('IT','Finance');
+-- Q13
+select name ,age,salary from employee where age>30 and salary>70000;
+-- Q14
+select name ,city,gender from employee where Gender='Female' and city='Mumbai';
+-- Q15
+select name,salary from employee where salary<=60000;
+-- Q16
+select name ,joining_date from employee order by joining_date desc;
+-- Q17
+select name ,age from employee order by age asc limit 5;
+-- Q18
+select name,department from employee where name like'A%';
+-- Q19
+select name ,department,city,salary from employee where department in( 'IT','HR' ) and salary>50000 and city='Mumbai';
+-- Q20
+select name ,department from employee where department != 'IT';
+-- Q21
+select name ,salary from employee where salary not between 50000 And 80000;
+-- Q22
+select name ,department from employee where department not in('IT' , 'HR');
+-- Q23
+select  name ,gender from employee where name like '%a';
+-- Q24
+select name from employee where name like '%i%';
+-- Q25
+select name ,manager_id from employee where manager_id is null;
+-- Q26
+select name , manager_id from employee where manager_id is not null;
+-- Q27
+select name ,salary, salary + 5000 'Salary'  from employee ; 
+-- Q28
+select name ,salary , bonus , salary + bonus 'Total_Income' from employee;
+-- Q29
+select name ,department,age,salary from employee where department in('IT','Finance') and salary>60000 and age<35;
+-- Q30
+select count(name) 'Total_Employee' from employee;
+-- Q31
+select sum(salary) 'Total_salary'from employee;
+-- Q32
+select avg(salary)  'Average_salary'from employee;
+-- Q33
+select min(salary) 'Minimum_salary' from employee;
+-- Q34
+select max(salary) 'Maximum_Salary' from employee;
+-- Q35
+select department, count(*)  from employee where department = 'IT' group by department ;
+-- Q36
+select department,sum(salary) from employee  where  department ='IT' group by department;
+-- Q37
+select avg(salary)  from employee where city='Mumbai' ;
+-- Q38
+select max(salary) from employee where gender ='Female';
+-- Q39
+select  min(salary) from employee where city = 'Pune'  ;
