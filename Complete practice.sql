@@ -95,3 +95,55 @@ select avg(salary)  from employee where city='Mumbai' ;
 select max(salary) from employee where gender ='Female';
 -- Q39
 select  min(salary) from employee where city = 'Pune'  ;
+
+-- Day 2 !5 agust 2026
+-- Q40
+select department, sum(salary) 'total_salary' from employee group by department;
+-- Q41
+select department,avg(salary) 'average_salary'from employee group by department;
+-- Q42
+select department from employee group by department having avg(salary)>60000;
+-- Q43
+select city ,count(*) 'employee_count' from employee group by city;
+-- Q44
+select city ,max(salary) 'Salary' from employee group by city;
+-- Q45
+select department,avg(salary) from employee where department='IT' group by department having avg(salary)>60000;
+-- Q46
+select department ,min(salary),max(salary) from employee group by department;
+-- Q47
+select department,sum(salary) 'total_salary' from employee  group by department order by 'tatal_salary' desc limit 1;
+-- Q48
+select city, count(*) from employee group by city having count(*)>3;
+-- Q49
+select department,count(*),avg(salary) from employee group by department having count(*)>2 and avg(salary)>60000;
+-- Q50
+select name,salary,
+case
+when salary>=80000 then 'high'
+when salary>=60000 then 'Medium'
+else 'low'
+end 'salary_category'
+from employee ;
+-- Q51
+select name ,age ,
+case
+ when age>=35 then 'Senior'
+ when age>=25 then 'Mid'
+else 'Junior'
+end 'Employee_level' 
+from employee;
+-- Q52
+select group_concat(name),
+case 
+when salary>=80000 then 'high'
+when salary>=60000 then 'Medium'
+else 'low'
+end 'Categorie',count(*)
+from employee
+ group by case
+ when salary>=80000 then 'high'
+ when salary>=60000 then 'Medium'
+ else 'low'
+ end ;
+
