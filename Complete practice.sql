@@ -147,3 +147,90 @@ from employee
  else 'low'
  end ;
 
+-- Day 3 16 Agust 2026
+-- Q53
+select name,salary, 
+case 
+when salary>=80000 then 'High'
+when salary>=60000 then 'Medium'
+else 'low'
+end 'salary_level'
+from employee;
+-- Q54
+select name ,age ,
+case
+when age>=35 then 'Senior'
+when age>=25 then 'mid'
+else 'junior'
+end 'salary_level'
+from employee;
+-- Q55
+select name,salary,
+case 
+when salary >=80000 then 10000 
+when salary>=60000 then 50000
+else 2000
+end 'Bonus'
+from employee;
+-- Q56
+select name ,gender,
+case 
+when gender= 'Male' then 'M'
+when gender='Female' then 'F'
+else 'other'
+end 'Gender_Lablel'
+from employee;
+-- Q57
+select name,salary,
+case 
+when salary>=70000 then 'Above Target'
+else 'Below Target'
+end 'Salary_status'
+from employee;
+
+-- Q58
+select name , age ,
+case 
+when department = 'IT' then 'Technical'
+when department ='Finance' then 'Intermediate'
+when department = 'HR' then 'Non-Technical'
+else 'other'
+end 'Department_type'
+from employee;
+-- Q59
+select name , age ,
+case
+when age>=35 then 'Experienced'
+when age>=28 then 'Intermediate'
+else 'fresher'
+end 'Experience level'
+from employee;
+-- Q60
+select count(*) 'Employee_count',
+case 
+when salary>=80000 then 'High'
+when salary>=60000 then 'Medium'
+else 'low'
+end 'Category'
+from employee group by category;
+-- Q61
+select name,upper(name) from employee;
+-- Q62
+select name ,lower(name) from employee;
+-- Q63
+select name,length(name) 'Nmae_length' from employee;
+-- Q64
+select name , left(name,1) from employee;
+-- Q65
+select name ,right(name,2) from employee;
+-- Q66
+select name , concat(name ," - ", department) from employee;
+-- Q67
+select name ,Email, substring_index(Email,'@',1) 'Username' from employee;
+-- Q68
+select name, concat(upper(name)," " ,'( ',Department,' )') from employee;
+-- Q69
+select name,length(name) from employee where length(name)>5 ;
+-- Q70 
+select name,email, substring_index(Email,'@',-1) from employee;
+
