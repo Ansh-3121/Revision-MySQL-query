@@ -234,3 +234,45 @@ select name,length(name) from employee where length(name)>5 ;
 -- Q70 
 select name,email, substring_index(Email,'@',-1) from employee;
 
+-- Day 4
+-- Q71
+select name , year(Joining_date) from employee ;
+-- Q72
+select name , month(Joining_date) from employee ;
+-- Q73
+select name , monthname(Joining_date) from employee ;
+-- Q74
+select name , year(Joining_date) from employee where  year(joining_date)=2023;
+-- Q75
+select name ,monthname(joining_date) from employee where monthname(joining_date) = 'January';
+-- Q76
+select name, timestampdiff(year,joining_date,curdate()) from employee;
+-- Q77
+select name, timestampdiff(month,joining_date,curdate()) from employee;
+-- Q78
+select name,date(joining_date),year(joining_date),monthname(joining_date) from employee;
+-- Q79
+select name , year(joining_date) from employee  where  year(joining_date) in (2022,2023);
+-- Q80
+ select year(joining_date),count(joining_date) from employee group by year(joining_date);
+ -- Q81
+ select concat(name,' joined on ', joining_date)  from employee;
+ -- Q82
+ select name,datediff(current_date(),joining_date) from employee;
+ -- Q83
+ select name ,timestampdiff(year,joining_date,current_date()) from employee where timestampdiff(year,joining_date,current_date())>=5;
+ -- Q84
+ select name ,joining_date,timestampdiff(year,joining_date,current_date()) 'Experience_year' from employee order by Experience_year desc ;
+ -- Q85
+ select department,round(avg(salary),2) from employee group by department;
+ -- Q86
+ select concat(name ,' → ₹',salary) from employee;
+ -- Q87
+ select name,email, substring_index(email, '@',1),substring_index(email, '@',-1) from employee;
+ -- Q88
+ select department ,count(*),sum(salary),avg(salary) from employee group by department;
+ -- Q89
+ select city ,count(*) from employee group by city order by count(*) desc;
+ -- Q90
+ select department ,max(salary) from employee group by department having max(salary)>80000;
+
