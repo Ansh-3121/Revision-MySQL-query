@@ -276,3 +276,46 @@ select name , year(joining_date) from employee  where  year(joining_date) in (20
  -- Q90
  select department ,max(salary) from employee group by department having max(salary)>80000;
 
+-- Day 5
+ CREATE TABLE departments (
+    department_id INT PRIMARY KEY,
+    department_name VARCHAR(30),
+    location VARCHAR(30)
+);
+
+INSERT INTO departments
+(department_id, department_name, location)
+VALUES
+(1, 'IT', 'Mumbai'),
+(2, 'HR', 'Pune'),
+(3, 'Finance', 'Delhi'),
+(4, 'Marketing', 'Mumbai'),
+(5, 'Sales', 'Delhi');
+
+-- Q91
+
+select name,e.department ,location from employee  e inner join departments d on e.department=d.department_name;
+-- Q92
+select name,department ,location from employee  e inner join departments d on e.department=d.department_name where e.department ='IT';
+-- Q93
+select e.name,salary,location from employee e inner join departments d on e.department=d.department_name;
+-- Q94
+select e.name,department,location from employee e inner join departments d on e.department=d.department_name where location ='Mumbai';
+-- Q95
+ select e.name,salary,location from employee e inner join departments d on e.department=d.department_name where department ='Finance';
+ -- Q96
+ select e.department,location,count(*) from employee e inner join departments d on e.department=d.department_name group by e.department,location ;
+ -- Q97
+ select  department ,location,sum(salary) from employee e inner join departments d on e.department=d.department_name
+ group by department,location;
+ -- Q98
+ select e.department,sum(salary) from employee e inner join departments d on e.department=d.department_name 
+ group by department having sum(salary)>200000;
+ 
+ -- Q99
+ select e.name,salary,department,location from employee e inner join departments d on e.department=d.department_name order by salary desc;
+ -- Q100
+ select location ,count(*),avg(salary) from employee e inner join departments d on e.department=d.department_name group by location;
+
+ 
+ 
