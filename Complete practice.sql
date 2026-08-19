@@ -317,5 +317,29 @@ select e.name,department,location from employee e inner join departments d on e.
  -- Q100
  select location ,count(*),avg(salary) from employee e inner join departments d on e.department=d.department_name group by location;
 
+-- Day 6
+ -- Q101
+ select e.name,department,location from employee e inner join departments d on  e.department=d.department_name;
+-- Q102
+select e.name ,salary,location from employee e left join departments d on e.department=d.department_name;
+-- Q103
+select d.department_name,location from departments d right join employee e on d.department_name=e.department group by d.department_name,location;
+-- Q104
+select e.name,salary,location from employee e inner join departments d on e.department=d.department_name where department='Finance';
+-- Q105
+select department_name,count(*) from employee e left join departments d on e.department=d.department_name group by department;
+-- Q106
+select department, count(*) from employee e inner join departments d on e.department=d.department_name group by department;
+-- Q107
+select department,sum(salary) from employee e left join departments d
+ on e.department=d.department_name group by department having sum(salary)>200000;
+ -- Q108
+ select department ,location ,count(*) from employee e right join departments d on e.department=d.department_name group by department ,location;
+ -- Q109
+ select e.name, salary ,location from employee e inner join departments d on e.department=d.department_name order by salary desc;
+ -- Q110 
+ select name ,salary from employee where salary>(select  avg(salary) from employee);
+ 
+
  
  
