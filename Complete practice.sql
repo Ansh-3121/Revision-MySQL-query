@@ -339,6 +339,20 @@ select department,sum(salary) from employee e left join departments d
  select e.name, salary ,location from employee e inner join departments d on e.department=d.department_name order by salary desc;
  -- Q110 
  select name ,salary from employee where salary>(select  avg(salary) from employee);
+
+-- Day 7
+ -- Q111
+  select name,salary from employee where salary = (select max(salary)  from employee);
+  -- Q112
+  select name,salary from employee where salary = (select min(salary)  from employee);
+  -- Q113
+  select name,salary from employee where department ="IT" and salary>(select avg(salary) from employee where department = 'IT' );
+  -- Q114
+  select name ,salary from employee where department = "Finance" and salary in (select max(salary) from employee where department='Finance');
+  -- Q115
+  select name,salary from employee where salary>(select avg(salary) from employee where department='IT');
+  -- Q116
+  select name ,salary from employee where salary =(select avg(salary) from employee);
  
 
  
