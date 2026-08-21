@@ -353,6 +353,35 @@ select department,sum(salary) from employee e left join departments d
   select name,salary from employee where salary>(select avg(salary) from employee where department='IT');
   -- Q116
   select name ,salary from employee where salary =(select avg(salary) from employee);
+-- Day 8
+-- Q117
+select name,department from employee where department in(select department_name from departments where location="Mumbai");
+  -- Q118
+  select e.name ,e.salary from employee e where salary>(select avg(e2.salary) from employee e2 where e2.department=e.department);
+  -- Q119
+  select name,salary from employee where salary = (select max(salary) from employee where salary <(select max(salary) from employee));
+  -- Q120
+  select name,salary from employee where salary >(select avg(salary) from employee);
+  -- Q121
+  select name ,salary from employee where salary = (select max(salary) from employee);
+  -- Q122
+  select name,salary from employee where salary =(select min(salary) from employee);
+  -- Q123
+  select name,salary from employee  where salary>(select avg(salary) from employee  where department="it");
+  -- Q124
+  select name ,salary,department from employee where salary=(select max(salary) from employee where department ="Finance");
+  -- Q125
+  select name ,salary,department from employee where salary>(select avg(salary) from employee where department="HR");
+  -- Q126
+  select name,salary ,department from  employee where department in(select department_name from departments where location="Mumbai");
+  -- Q127
+  select e.name,e.salary,e.department from employee e where e.salary>(select avg(e2.salary) from employee e2 where e.department=e2.department);
+  -- Q128
+  select name ,salary from employee where salary=(select max(salary) from employee where salary<(select max(salary) from employee));
+  -- Q129
+  select name ,salary from employee where salary<(select avg(salary) from employee )order by salary;
+  -- Q130
+  with avg_salary as (select avg(salary)  average_salary from employee)select * from avg_salary;
  
 
  
