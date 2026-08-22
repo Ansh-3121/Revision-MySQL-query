@@ -383,6 +383,22 @@ select name,department from employee where department in(select department_name 
   -- Q130
   with avg_salary as (select avg(salary)  average_salary from employee)select * from avg_salary;
  
-
+--  -- Day 9
+  -- Q131
+  with max_salary as (select  name, salary  'Maxsalary' from employee  where salary
+  >60000) select *
+  from max_salary ;
+  -- Q132
+  with dpt_wise as (select department ,avg(salary)  'Averagesalary' from employee group by department) select *from dpt_wise;
+  -- Q133
+   with dpt_wise as (select department ,avg(salary)  'Averagesalary' from employee group by department) select* from dpt_wise where
+   Averagesalary>60000;
+   -- Q134
+   with dpt_empcount as (select department,count(employee_id) 'Empcount' from employee group by department ) select * from 
+   dpt_empcount where Empcount>3;
+   
+-- Q135
+with dpt_tsalary as (select department,sum(salary) 'total_salary' from employee group by department)
+select department,total_salary from dpt_tsalary order by total_salary limit 3; 
  
  
